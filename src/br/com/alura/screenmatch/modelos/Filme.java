@@ -1,61 +1,21 @@
 package br.com.alura.screenmatch.modelos;
 
-public class Filme {
+import br.com.alura.screenmatch.calculos.Classificavel;
 
-    // Atributos
-    private String nome;
-    private int anoDeLancamento;
-    private boolean incluidoNoPlano;
-    // Contém o modificador de visibilidade/acesso
-    private double somaDasAvaliacoes;
-    // Contém o modificador de visibilidade/acesso
-    private int totalDeAvaliacoes;
-    private int duracaoEmMinutos;
+public class Filme extends Titulo implements Classificavel {
 
-    //==========================
-    // Método Acessor - Getters
-    //==========================
-    public int getTotalDeAvaliacoes(){
-        return totalDeAvaliacoes;
+   private String diretor;
+
+    public String getDiretor() {
+        return diretor;
     }
 
-    //==========================
-    // Métodos Incluir - Setters
-    //==========================
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setDiretor(String diretor) {
+        this.diretor = diretor;
     }
 
-    public void setAnoDeLancamento(int anoDeLancamento) {
-        this.anoDeLancamento = anoDeLancamento;
-    }
-
-    public void setIncluidoNoPlano(boolean incluidoNoPlano) {
-        this.incluidoNoPlano = incluidoNoPlano;
-    }
-
-    public void setDuracaoEmMinutos(int duracaoEmMinutos) {
-        this.duracaoEmMinutos = duracaoEmMinutos;
-    }
-
-    //==========================================
-    // Métodos - Maneira de 'fazer alguma coisa'
-    //==========================================
-
-    // Exibir Nome e Ano de Lançamento
-    public void exibeFichaTecnica(){
-        System.out.println("Nome do filme: " + nome);
-        System.out.println("Ano de Lançamento: " + anoDeLancamento);
-    }
-
-    // Somar as avaliações e contando quantas avaliações tiver
-    public void avalia(double nota){
-        somaDasAvaliacoes += nota;
-        totalDeAvaliacoes++;
-    }
-
-    // Calcular a média das avaliações
-    public double pegaMedia(){
-        return somaDasAvaliacoes / totalDeAvaliacoes;
+    @Override
+    public int getClassificacao() {
+        return (int)pegaMedia() / 2;
     }
 }
